@@ -47,7 +47,7 @@ io.on("connection", client => {
         io.sockets.emit("shell-in", data)
     })
 
-    client.on("shell-out", data => {6
+    client.on("shell-out", data => {
         io.sockets.emit("shell-out", data)
     })
 
