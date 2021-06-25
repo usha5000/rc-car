@@ -41,3 +41,5 @@ function fpsCounter() {
 
      fpsTag.innerHTML = 1/delta
 }
+
+setInterval(fpsCounter, 1000)
