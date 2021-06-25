@@ -38,5 +38,6 @@ function fpsCounter() {
      }
      delta = (Date.now() - lastCalledTime)/1000;
      lastCalledTime = Date.now();
-     fpsTag = 1/delta;
+
+     fpsTag.innerHTML = 1/delta
 }
