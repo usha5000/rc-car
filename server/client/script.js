@@ -28,11 +28,10 @@ function updateControls() {
 
 }
 
-/* function updateOverlay(key, val) {
-    const target = document.getElementById("stat_fps")
+function updateOverlay(key, val) {
+    const id = `stat_${key}`
+    var target = document.getElementById(id)
     target.innerHTML = `${key}: ${val}`
-    const target = vie.get("#stat_" + key)
-    target.innerHTML = `${key}: ${val}`
-} */
+}
 
 
