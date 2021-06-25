@@ -10,13 +10,21 @@ function initateStream() {
 
     console.log("stream ready");
 
-    streamStats.frames++
 
     socket.on("stream", data => {
         const u8 = new Uint8Array(data)
 
+        streamStats.frames++
+        updateOverlay("rate", u8.length)
+
         window.player.decode(u8);
     })
+
+    setInterval(() => {
+        const fps = streamStats.frames * 2
+        updateOverlay("fps", fps)
+        streamStats.frames = 0
+    }, 500);
 }
 
 initateStream()

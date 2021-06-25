@@ -1,4 +1,5 @@
 const socket = io()
+const display = vie.get('#display')
 
 window.addEventListener("gamepadconnected", function(e) {
     console.log("Gamepad connected")
@@ -27,23 +28,9 @@ function updateControls() {
 
 }
 
-const times = [];
-let fps;
-
-function refreshLoop() {
-  window.requestAnimationFrame(() => {
-    const now = performance.now();
-    while (times.length > 0 && times[0] <= now - 1000) {
-      times.shift();
-    }
-    times.push(now);
-    fps = times.length;
-    let fpsStat = document.getElementById("stat_fps")
-
-    fpsStat.innerHTML = fps
-
-    refreshLoop()
-  });
+function updateOverlay(key, val) {
+    const target = vie.get("#stat_" + key)
+    target.innerHTML = `${key}: ${val}`
 }
 
-refreshLoop()
+
