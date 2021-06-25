@@ -27,19 +27,21 @@ function updateControls() {
 
 }
 
-function fpsCounter() {
-    let lastCalledTime
-    let fpsTag = document.getElementById("stat_fps")
+const times = [];
+let fps;
 
-    if(!lastCalledTime) {
-        lastCalledTime = Date.now();
-        fps = 0;
-        return;
-     }
-     delta = (Date.now() - lastCalledTime)/1000;
-     lastCalledTime = Date.now();
+function refreshLoop() {
+  window.requestAnimationFrame(() => {
+    const now = performance.now();
+    while (times.length > 0 && times[0] <= now - 1000) {
+      times.shift();
+    }
+    times.push(now);
+    fps = times.length;
+    let fpsStat = document.getElementById("stat_fps")
 
-     fpsTag.innerHTML = 1/delta
+    fpsStat.innerHTML = fps
+  });
 }
 
-setInterval(fpsCounter, 1000)
+setInterval(refreshLoop, 250)
