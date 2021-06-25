@@ -41,7 +41,9 @@ function refreshLoop() {
     let fpsStat = document.getElementById("stat_fps")
 
     fpsStat.innerHTML = fps
+
+    refreshLoop()
   });
 }
 
-setInterval(refreshLoop, 250)
+refreshLoop()
