@@ -1,5 +1,4 @@
 const socket = io()
-const display = vie.get('#display')
 
 window.addEventListener("gamepadconnected", function(e) {
     console.log("Gamepad connected")
