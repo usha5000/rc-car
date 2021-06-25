@@ -15,7 +15,7 @@ function initateStream() {
         const u8 = new Uint8Array(data)
 
         streamStats.frames++
-        updateOverlay("rate", u8.length)
+        /* updateOverlay("rate", u8.length) */
 
         window.player.decode(u8);
     })
