@@ -26,3 +26,17 @@ function updateControls() {
     }, 100);
 
 }
+
+function fpsCounter() {
+    let lastCalledTime
+    let fpsTag = document.getElementById("stat_fps")
+
+    if(!lastCalledTime) {
+        lastCalledTime = Date.now();
+        fps = 0;
+        return;
+     }
+     delta = (Date.now() - lastCalledTime)/1000;
+     lastCalledTime = Date.now();
+     fpsTag = 1/delta;
+}

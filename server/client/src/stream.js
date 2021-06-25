@@ -10,6 +10,8 @@ function initateStream() {
 
     console.log("stream ready");
 
+    streamStats.frames++
+
     socket.on("stream", data => {
         const u8 = new Uint8Array(data)
 
