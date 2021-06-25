@@ -22,7 +22,9 @@ function initateStream() {
 
     setInterval(() => {
         const fps = streamStats.frames * 2
-        updateOverlay("fps", fps)
+        let fpsStat = document.getElementById("stat_fps")
+        fpsStat.innerHTML = `FPS: ${fps}`
+        /* updateOverlay("fps", fps) */
         streamStats.frames = 0
     }, 500);
 }
