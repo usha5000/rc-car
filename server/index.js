@@ -4,6 +4,9 @@ const socketio = require("socket.io")
 const ucon = require("./src/ucon").server("0.0.0.0", 1000)
 const socket = require("dgram").createSocket("udp4")
 const Split = require("stream-split")
+const jwt = require('jsonwebtoken')
+const config = require('./db/knexfile.js')['development'];
+const knex = require('knex')(config)
 
 const app = express()
 const server = http.createServer(app)
@@ -13,9 +16,34 @@ const io = socketio(server, {
     }
 })
 
+const pepper = "geheimstring"
 
 app.use(express.json())
-app.use(express.static("./client"))
+app.use(express.static("./client/login"))
+
+app.post('/api/user/login', async (req,res) => {
+    let credentials = req.body
+
+    let users = await knex('user')
+    .where('username', credentials.username)
+    .where('password', credentials.password)
+
+    let user = users[0]
+
+    if (user) {
+        console.log(user);
+        if (user.password === credentials.password) {
+            let payload = {username:user.username, role:"ist nicht bekannt"}
+            let token = jwt.sign(payload, pepper)
+            res.json({ 
+              token: token
+            })
+        }
+    } else {
+        console.log("user not found!");
+        res.json("Anmeldung Fehlgeschlagen")
+    }
+})
 
 const NALSeparator = new Buffer.from([0, 0, 0, 1])
 const NALSplitter = new Split(NALSeparator)
