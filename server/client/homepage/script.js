@@ -33,4 +33,16 @@ function updateOverlay(key, val) {
     target.innerHTML = `${key}: ${val}`
 }
 
+function logout() {
+    localStorage.removeItem("token");
+    window.location.href = ("../login")
+}
 
+function loginCheck() {
+    if (localStorage.token) {
+    } else {
+        window.location.href = "../login"
+    }
+}
+
+loginCheck()

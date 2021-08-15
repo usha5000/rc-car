@@ -19,7 +19,10 @@ const io = socketio(server, {
 const pepper = "geheimstring"
 
 app.use(express.json())
-app.use(express.static("./client/login"))
+
+ROOT_DIR = "./client"
+
+app.use(express.static(ROOT_DIR))
 
 app.post('/api/user/login', async (req,res) => {
     let credentials = req.body
@@ -31,7 +34,6 @@ app.post('/api/user/login', async (req,res) => {
     let user = users[0]
 
     if (user) {
-        console.log(user);
         if (user.password === credentials.password) {
             let payload = {username:user.username, role:"ist nicht bekannt"}
             let token = jwt.sign(payload, pepper)

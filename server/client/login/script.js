@@ -11,7 +11,6 @@ function login() {
         let data = response.data
         
         if (data.token) {
-            console.log(data.token);
             localStorage.setItem('token', data.token)
             window.location.href = "../homepage"
         } else {
@@ -20,3 +19,5 @@ function login() {
         }
     })
 }
+
+
