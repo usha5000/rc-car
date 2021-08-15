@@ -5,7 +5,7 @@ module.exports = {
       connection: {
         database: 'car_project',
         user:     'root',
-        password: 'root'
+        password: 'sml12345'
       },
       migrations: {
         tableName: 'knex_migrations'
