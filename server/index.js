@@ -1,3 +1,8 @@
+const PORTS = {
+    http: 8080,
+    ucon: 1000,
+    udpRaw: 2000
+}
 const express = require('express');
 const http = require('http');
 const socketio = require("socket.io")
@@ -15,12 +20,6 @@ const io = socketio(server, {
         origin: '*',
     }
 })
-
-const PORTS = {
-    http: 8080,
-    ucon: 1000,
-    udpRaw: 2000
-}
 
 const pepper = "geheimstring"
 
