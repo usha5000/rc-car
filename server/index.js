@@ -1,7 +1,7 @@
 const express = require('express');
 const http = require('http');
 const socketio = require("socket.io")
-const ucon = require("./src/ucon").server("0.0.0.0", 1000)
+const ucon = require("./src/ucon").server("0.0.0.0", PORTS.ucon)
 const socket = require("dgram").createSocket("udp4")
 const Split = require("stream-split")
 const jwt = require('jsonwebtoken')
@@ -15,6 +15,12 @@ const io = socketio(server, {
         origin: '*',
     }
 })
+
+const PORTS = {
+    http: 8080,
+    ucon: 1000,
+    udpRaw: 2000
+}
 
 const pepper = "geheimstring"
 
@@ -87,8 +93,8 @@ io.on("connection", client => {
 
 })
 
-server.listen(8080, () => {
-    console.log("online on 8080");
+server.listen(PORTS.http, () => {
+    console.log(`online on ${PORTS.http}`);
 })
 
-socket.bind(2000, "0.0.0.0")
+socket.bind(PORTS.udpRaw, "0.0.0.0")
