@@ -1,5 +1,5 @@
 const PORTS = {
-    http: 80,
+    http: 8081,
     ucon: 1000,
     udpRaw: 2000
 }
