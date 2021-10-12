@@ -1,7 +1,7 @@
 const PORTS = {
     http: 81,
-    ucon: 1000,
-    udpRaw: 2000
+    ucon: 1005,
+    udpRaw: 2005
 }
 
 const express = require('express');
