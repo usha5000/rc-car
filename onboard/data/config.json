@@ -1,8 +1,8 @@
 {
-    "host":"detonator.verion.ch",
-    "port_http":"8081",
-    "port_udp":"3000",
-    "port_udp_raw":"4000",
+    "host":"verion.ch",
+    "port_http":"81",
+    "port_udp":"1000",
+    "port_udp_raw":"2000",
     "video": {
         "fps":30,
         "width":480,
