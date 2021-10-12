@@ -1,8 +1,8 @@
 {
     "host":"verion.ch",
     "port_http":"81",
-    "port_udp":"1000",
-    "port_udp_raw":"2000",
+    "port_udp":"1005",
+    "port_udp_raw":"2005",
     "video": {
         "fps":30,
         "width":480,
