@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.5.0/css/xterm.css" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detonator</title>
+    <title>Document</title>
 </head>
 <body>
+    <div id="display">    
+    </div>
+    <div id="overlay">
+        <p id="stat_fps"></p>
+        <p id="stat_signal"></p>
+        <p id="stat_rate"></p>
+    </div>
+
+    <p id="alert"></p>
+
+    <div class="terminalWrapper terminalHidden" id="terminalWrapper" style="visibility: hidden">
+        <div id="terminalWrapperheader" class="terminalHeader">
+            <p>Terminal</p>
+            <p id="closeTerminal" onclick="toggleTerminal()">x</p>
+        </div>
+        <div id="terminal"></div>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebarOpener"></div>
+        <h2>Menu</h2>
+        <div class="menu">
+            <p onclick="toggleTerminal()">Terminal</p>
+            <p onclick="location.reload()">Reload</p>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/xterm@4.5.0/lib/xterm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.3.0/lib/xterm-addon-fit.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js" integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     <script src="./script.js"></script>
+    <script src="./src/terminal.js"></script>
+    
+    <script src='Decoder.js'></script>
+    <script src='YUVCanvas.js'></script>
+    <script src='Player.js'></script>
+
+    <script src="./src/stream.js"></script>
+
 </body>
 </html>
